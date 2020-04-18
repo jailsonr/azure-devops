@@ -3,7 +3,7 @@ const vsoNodeApi = require("azure-devops-node-api");
 // Create a personal from azure devops
 const token = "tdqir4vtrqrfl6ubdnycvgz52moqnjtcbwanzbuibgavfzzeeica";
 // Url to your organization
-const serverUrl = "<INSERT REPO URL>";
+const serverUrl = "https://dev.azure.com/jrodrigues0810";
 let authHandler = vsoNodeApi.getPersonalAccessTokenHandler(token);
 let AzDO = new vsoNodeApi.WebApi(serverUrl, authHandler, undefined);
 
@@ -43,7 +43,8 @@ const constructTeams = async (teams) => {
     await asyncForEach(teams[key], async (el) => {
       const temp = {};
       const { projectId, teamId } = el;
-      const url = `https://<INSERT TOKEN>@<INSERT URL>/${projectId}/_api/_identity/Display?__v=5&tfid=${teamId}`;
+      const url = `https://tdqir4vtrqrfl6ubdnycvgz52moqnjtcbwanzbuibgavfzzeeica@dev.azure.com/jrodrigues0810/${projectId}/_api/_identity/Display?__v=5&tfid=${teamId}`;
+      console.log(url);
       request.get(url, function (error, response, body) {
         const parsedBody = JSON.parse(body);
         if (
